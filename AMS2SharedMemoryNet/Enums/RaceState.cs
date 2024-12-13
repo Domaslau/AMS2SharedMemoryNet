@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum RaceState
+    public enum RaceState
     {
         RACESTATE_INVALID,
         RACESTATE_NOT_STARTED,

@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum SessionState
+    public enum SessionState
     {
         SESSION_INVALID = 0,
         SESSION_PRACTICE,

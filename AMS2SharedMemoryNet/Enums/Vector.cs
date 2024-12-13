@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum Vector
+    public enum Vector
     {
         VEC_X = 0,
         VEC_Y,

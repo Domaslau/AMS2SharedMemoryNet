@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum PitMode
+    public enum PitMode
     {
         PIT_MODE_NONE = 0,
         PIT_MODE_DRIVING_INTO_PITS,

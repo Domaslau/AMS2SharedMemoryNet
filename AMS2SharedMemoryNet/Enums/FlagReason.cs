@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum FlagReason
+    public enum FlagReason
     {
         FLAG_REASON_NONE = 0,
         FLAG_REASON_SOLO_CRASH,

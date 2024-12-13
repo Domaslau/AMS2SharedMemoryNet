@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum LaunchStage
+    public enum LaunchStage
     {
         LAUNCH_INVALID = -1,    // Launch control unavailable
         LAUNCH_OFF = 0,         // Launch control inactive

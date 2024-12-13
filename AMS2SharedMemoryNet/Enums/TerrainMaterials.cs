@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum TerrainMaterials
+    public enum TerrainMaterials
     {
         TERRAIN_ROAD = 0,
         TERRAIN_LOW_GRIP_ROAD,

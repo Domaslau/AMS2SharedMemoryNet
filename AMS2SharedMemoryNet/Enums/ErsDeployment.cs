@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum ErsDeployment
+    public enum ErsDeployment
     {
         ERS_DEPLOYMENT_MODE_NONE = 0, // The vehicle does not support deployment modes
         ERS_DEPLOYMENT_MODE_OFF, // Regen only, no deployment

@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum CrashDamage
+    public enum CrashDamage
     {
         CRASH_DAMAGE_NONE = 0,
         CRASH_DAMAGE_OFFTRACK,

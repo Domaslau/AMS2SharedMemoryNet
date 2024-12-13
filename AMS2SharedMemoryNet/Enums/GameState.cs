@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum GameState
+    public enum GameState
     {
         GAME_EXITED = 0,
         GAME_FRONT_END,

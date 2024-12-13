@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum CarFlags
+    public enum CarFlags
     {
         CAR_HEADLIGHT = 1 << 0,
         CAR_ENGINE_ACTIVE = 1 << 1,

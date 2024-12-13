@@ -6,7 +6,7 @@ using AMS2SharedMemoryNet.Structs;
 namespace AMS2SharedMemoryNet
 {
     [SupportedOSPlatform("windows")]
-    internal class MemoryParser
+    public class MemoryParser
     {
         MemoryMappedFile mmf;
         MemoryMappedViewStream stream;

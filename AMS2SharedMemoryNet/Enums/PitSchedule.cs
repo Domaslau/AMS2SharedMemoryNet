@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum PitSchedule
+    public enum PitSchedule
     {
         PIT_SCHEDULE_NONE = 0,            // Nothing scheduled
         PIT_SCHEDULE_PLAYER_REQUESTED,    // Used for standard pit sequence - requested by player

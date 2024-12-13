@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum FlagColour
+    public enum FlagColour
     {
         FLAG_COLOUR_NONE = 0,             // Not used for actual flags, only for some query functions
         FLAG_COLOUR_GREEN,                // End of danger zone, or race started

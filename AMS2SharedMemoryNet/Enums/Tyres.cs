@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum Tyres
+    public enum Tyres
     {
         TYRE_FRONT_LEFT,
         TYRE_FRONT_RIGHT,

@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum YellowFlagState
+    public enum YellowFlagState
     {
         YFS_INVALID = -1,
         YFS_NONE,           // No yellow flag pending on track

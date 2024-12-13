@@ -1,6 +1,6 @@
 ﻿namespace AMS2SharedMemoryNet.Enums
 {
-    internal enum DrsState
+    public enum DrsState
     {
         DRS_INSTALLED = 1 << 0,  // Vehicle has DRS capability
         DRS_ZONE_RULES = 1 << 1,  // 1 if DRS uses F1 style rules
