@@ -9,22 +9,36 @@ namespace AMS2SharedMemoryNet
     public class MemoryParser
     {
         MemoryMappedFile mmf;
-        MemoryMappedViewStream stream;
-        private bool Closed { get; set; } = false;
+
+        private bool _closed { get; set; }
+        private string _file {  get; set; }
 
         public MemoryParser(string file)
         {
-            mmf = MemoryMappedFile.OpenExisting(file);
-            stream = mmf.CreateViewStream();
+            _file = file;
+            try
+            {
+                mmf = MemoryMappedFile.OpenExisting(file);
+                _closed = false;
+            }
+            catch (Exception ex)
+            {
+                #if DEBUG
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                #endif
+                Console.WriteLine("Failed to open file, game is likely not running");
+                _closed = true;
+            }
         }
 
         public AMS2Page GetPage()
         {
-
-        Again:
-            if (!Closed)
+            Again:
+            if (!_closed)
             {
                 byte[] buffer = new byte[Marshal.SizeOf<AMS2Page>()];
+                MemoryMappedViewStream stream = mmf.CreateViewStream();
                 stream.Read(buffer, 0, buffer.Length);
                 int size = buffer.Length;
                 nint ptr = nint.Zero;
@@ -41,6 +55,7 @@ namespace AMS2SharedMemoryNet
                 }
                 finally
                 {
+                    stream.Close();
                     Marshal.FreeHGlobal(ptr);
                     ptr = nint.Zero;
                 }
@@ -50,16 +65,28 @@ namespace AMS2SharedMemoryNet
             }
             else
             {
-                return new AMS2Page();
+                try
+                {
+                    mmf = MemoryMappedFile.OpenExisting(_file);
+                    _closed = false;
+                    return GetPage();
+                }
+                catch (Exception ex)
+                {
+                    #if DEBUG
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.StackTrace);
+                    #endif
+                    Console.WriteLine("Failed to open file or create a stream, are you trying to access file without game running?");
+                    throw new Exception("Failed to open file or create view stream");
+                }
             }
         }
 
         public void Close()
         {
-            stream.Close();
-            stream.Dispose();
             mmf.Dispose();
-            Closed = true;
+            _closed = true;
         }
     }
 }
