@@ -235,7 +235,7 @@ namespace AMS2SharedMemoryNet.Structs
         public uint[] mHighestFlagReasons;// [STORED_PARTICIPANTS_MAX];                 // [ enum (Type#6) Flag Reason ]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public uint[] mNationalities;// [STORED_PARTICIPANTS_MAX];                                         // [ nationality table , SP AND UNSET = 0 ]
-        public float[] mSnowDensity;                                                             // [ UNITS = How much snow will fall ]   [ RANGE = 0.0f->1.0f ], this is non zero only in Winter and Snow seasons
+        public float mSnowDensity;                                                             // [ UNITS = How much snow will fall ]   [ RANGE = 0.0f->1.0f ], this is non zero only in Winter and Snow seasons
 
         // AMS2 Additions (v10...)
 
