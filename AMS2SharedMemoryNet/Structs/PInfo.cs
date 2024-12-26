@@ -5,15 +5,15 @@ namespace AMS2SharedMemoryNet.Structs
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct PInfo
     {
-        byte mIsActive;
+        public byte mIsActive;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
-        char[] mName;//[STRING_LENGTH_MAX];                   // [ string ]
+        public char[] mName;//[STRING_LENGTH_MAX];                   // [ string ]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
-        float[] mWorldPosition;// [VEC_MAX];                   // [ UNITS = World Space  X  Y  Z ]
-        float mCurrentLapDistance;                       // [ UNITS = Metres ]   [ RANGE = 0.0f->... ]    [ UNSET = 0.0f ]
-        uint mRacePosition;                      // [ RANGE = 1->... ]   [ UNSET = 0 ]
-        uint mLapsCompleted;                     // [ RANGE = 0->... ]   [ UNSET = 0 ]
-        uint mCurrentLap;                        // [ RANGE = 0->... ]   [ UNSET = 0 ]
-        int mCurrentSector;
+        public float[] mWorldPosition;// [VEC_MAX];                   // [ UNITS = World Space  X  Y  Z ]
+        public float mCurrentLapDistance;                       // [ UNITS = Metres ]   [ RANGE = 0.0f->... ]    [ UNSET = 0.0f ]
+        public uint mRacePosition;                      // [ RANGE = 1->... ]   [ UNSET = 0 ]
+        public uint mLapsCompleted;                     // [ RANGE = 0->... ]   [ UNSET = 0 ]
+        public uint mCurrentLap;                        // [ RANGE = 0->... ]   [ UNSET = 0 ]
+        public int vmCurrentSector;
     }
 }
