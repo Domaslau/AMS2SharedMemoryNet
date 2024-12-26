@@ -14,6 +14,6 @@ namespace AMS2SharedMemoryNet.Structs
         public uint mRacePosition;                      // [ RANGE = 1->... ]   [ UNSET = 0 ]
         public uint mLapsCompleted;                     // [ RANGE = 0->... ]   [ UNSET = 0 ]
         public uint mCurrentLap;                        // [ RANGE = 0->... ]   [ UNSET = 0 ]
-        public int vmCurrentSector;
+        public int mCurrentSector;
     }
 }
