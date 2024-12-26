@@ -18,7 +18,7 @@ namespace AMS2SharedMemoryNet.Structs
         public int mNumParticipants;                                         // [ RANGE = 0->STORED_PARTICIPANTS_MAX ]   [ UNSET = -1 ]
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
-        PInfo[] mParticipantInfo;// [STORED_PARTICIPANTS_MAX];    // [ struct (Type#13) ParticipantInfo struct ]
+        public PInfo[] mParticipantInfo;// [STORED_PARTICIPANTS_MAX];    // [ struct (Type#13) ParticipantInfo struct ]
 
         // Unfiltered Input
         public float mUnfilteredThrottle;                        // [ RANGE = 0.0f->1.0f ]
@@ -28,9 +28,9 @@ namespace AMS2SharedMemoryNet.Structs
 
         // Vehicle information
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
-        char[] mCarName;//[STRING_LENGTH_MAX];                 // [ string ]
+        public char[] mCarName;//[STRING_LENGTH_MAX];                 // [ string ]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
-        char[] mCarClassName;// [STRING_LENGTH_MAX];            // [ string ]
+        public char[] mCarClassName;// [STRING_LENGTH_MAX];            // [ string ]
 
         // Event information
         public uint mLapsInEvent;                        // [ RANGE = 0->... ]   [ UNSET = 0 ]
