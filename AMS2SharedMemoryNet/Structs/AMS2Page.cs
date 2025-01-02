@@ -42,7 +42,7 @@ namespace AMS2SharedMemoryNet.Structs
 
         // Timings
         public int mNumSectors;                                  // [ RANGE = 0->... ]   [ UNSET = -1 ]
-        public bool mLapInvalidated;                             // [ UNITS = boolean ]   [ RANGE = false->true ]   [ UNSET = false ]
+        public byte mLapInvalidated;                             // [ UNITS = boolean ]   [ RANGE = false->true ]   [ UNSET = false ]
         public float mBestLapTime;                               // [ UNITS = seconds ]   [ RANGE = 0.0f->... ]   [ UNSET = -1.0f ]
         public float mLastLapTime;                               // [ UNITS = seconds ]   [ RANGE = 0.0f->... ]   [ UNSET = 0.0f ]
         public float mCurrentTime;                               // [ UNITS = seconds ]   [ RANGE = 0.0f->... ]   [ UNSET = 0.0f ]
@@ -92,10 +92,10 @@ namespace AMS2SharedMemoryNet.Structs
         public int mGear;                                       // [ RANGE = -1 (Reverse)  0 (Neutral)  1 (Gear 1)  2 (Gear 2)  etc... ]   [ UNSET = 0 (Neutral) ]
         public int mNumGears;                                   // [ RANGE = 0->... ]   [ UNSET = -1 ]
         public float mOdometerKM;                               // [ RANGE = 0.0f->... ]   [ UNSET = -1.0f ]
-        public bool mAntiLockActive;                            // [ UNITS = boolean ]   [ RANGE = false->true ]   [ UNSET = false ]
+        public byte mAntiLockActive;                            // [ UNITS = boolean ]   [ RANGE = false->true ]   [ UNSET = false ]
         public int mLastOpponentCollisionIndex;                 // [ RANGE = 0->STORED_PARTICIPANTS_MAX ]   [ UNSET = -1 ]
         public float mLastOpponentCollisionMagnitude;           // [ RANGE = 0.0f->... ]
-        public bool mBoostActive;                               // [ UNITS = boolean ]   [ RANGE = false->true ]   [ UNSET = false ]
+        public byte mBoostActive;                               // [ UNITS = boolean ]   [ RANGE = false->true ]   [ UNSET = false ]
         public float mBoostAmount;                              // [ RANGE = 0.0f->100.0f ] 
 
         // Motion & Device Related
@@ -203,12 +203,12 @@ namespace AMS2SharedMemoryNet.Structs
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public float[] mLastLapTimes;// [STORED_PARTICIPANTS_MAX];               // [ UNITS = seconds ]   [ RANGE = 0.0f->... ]   [ UNSET = -1.0f ]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
-        public bool[] mLapsInvalidated;// [STORED_PARTICIPANTS_MAX];            // [ UNITS = boolean for all participants ]   [ RANGE = false->true ]   [ UNSET = false ]
+        public byte[] mLapsInvalidated;// [STORED_PARTICIPANTS_MAX];            // [ UNITS = boolean for all participants ]   [ RANGE = false->true ]   [ UNSET = false ]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public uint[] mRaceStates;// [STORED_PARTICIPANTS_MAX];         // [ enum (Type#3) Race State ]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public uint[] mPitModes;// [STORED_PARTICIPANTS_MAX];           // [ enum (Type#7)  Pit Mode ]
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 192)]
         public float[] mOrientations;// [STORED_PARTICIPANTS_MAX][VEC_MAX];      // [ UNITS = Euler Angles ]
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
         public float[] mSpeeds;// [STORED_PARTICIPANTS_MAX];                     // [ UNITS = Metres per-second ]   [ RANGE = 0.0f->... ]
@@ -267,17 +267,17 @@ namespace AMS2SharedMemoryNet.Structs
 
         // ERS
         public int mErsDeploymentMode;           // [ enum (Type#15)  ErsDeploymentMode ]
-        public bool mErsAutoModeEnabled;         // true if the deployment mode was selected by auto system. Valid only when mErsDeploymentMode > ERS_DEPLOYMENT_MODE_NONE
+        public byte mErsAutoModeEnabled;         // true if the deployment mode was selected by auto system. Valid only when mErsDeploymentMode > ERS_DEPLOYMENT_MODE_NONE
 
         // Clutch State & Damage
         public float mClutchTemp;                // [ UNITS = Kelvin ] [ UNSET = -273.16 ]
         public float mClutchWear;                // [ RANGE = 0.0f->1.0f... ]
-        public bool mClutchOverheated;          // true if clutch performance is degraded due to overheating
-        public bool mClutchSlipping;            // true if clutch is slipping (can be induced by overheating or wear)
+        public byte mClutchOverheated;          // true if clutch performance is degraded due to overheating
+        public byte mClutchSlipping;            // true if clutch is slipping (can be induced by overheating or wear)
 
         public int mYellowFlagState;             // [ enum (Type#16) YellowFlagState ]
 
-        public bool mSessionIsPrivate;           // true if this is a private session where users cannot see or interact with other drivers (and so would not need positional awareness of them etc)
+        public byte mSessionIsPrivate;           // true if this is a private session where users cannot see or interact with other drivers (and so would not need positional awareness of them etc)
         public int mLaunchStage;                 // [ enum (Type#17) LaunchStage
     }
 }
