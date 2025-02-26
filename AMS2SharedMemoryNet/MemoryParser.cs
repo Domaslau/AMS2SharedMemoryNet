@@ -8,18 +8,16 @@ namespace AMS2SharedMemoryNet
     [SupportedOSPlatform("windows")]
     public class MemoryParser
     {
-        MemoryMappedFile mmf;
+        MemoryMappedFile? mmf;
 
-        private bool _closed { get; set; }
-        private string _file {  get; set; }
+        private string File {  get; set; }
 
         public MemoryParser(string file)
         {
-            _file = file;
+            File = file;
             try
             {
                 mmf = MemoryMappedFile.OpenExisting(file);
-                _closed = false;
             }
             catch (Exception ex)
             {
@@ -28,16 +26,16 @@ namespace AMS2SharedMemoryNet
                 Console.WriteLine(ex.StackTrace);
                 #endif
                 Console.WriteLine("Failed to open file, game is likely not running");
-                _closed = true;
             }
         }
 
         public AMS2Page GetPage()
         {
             Again:
-            if (!_closed)
+            if (mmf!= null)
             {
                 byte[] buffer = new byte[Marshal.SizeOf<AMS2Page>()];
+
                 MemoryMappedViewStream stream = mmf.CreateViewStream();
                 stream.Read(buffer, 0, buffer.Length);
                 int size = buffer.Length;
@@ -67,8 +65,7 @@ namespace AMS2SharedMemoryNet
             {
                 try
                 {
-                    mmf = MemoryMappedFile.OpenExisting(_file);
-                    _closed = false;
+                    mmf = MemoryMappedFile.OpenExisting(File);
                     return GetPage();
                 }
                 catch (Exception ex)
@@ -85,8 +82,7 @@ namespace AMS2SharedMemoryNet
 
         public void Close()
         {
-            mmf.Dispose();
-            _closed = true;
+            mmf?.Dispose();
         }
     }
 }
