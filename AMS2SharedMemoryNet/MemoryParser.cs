@@ -31,34 +31,37 @@ namespace AMS2SharedMemoryNet
 
         public AMS2Page GetPage()
         {
-            Again:
             if (mmf!= null)
             {
-                byte[] buffer = new byte[Marshal.SizeOf<AMS2Page>()];
-
-                MemoryMappedViewStream stream = mmf.CreateViewStream();
-                stream.Read(buffer, 0, buffer.Length);
-                int size = buffer.Length;
-                nint ptr = nint.Zero;
                 AMS2Page page = new();
-                try
+                do
                 {
-                    ptr = Marshal.AllocHGlobal(size);
-                    Marshal.Copy(buffer, 0, ptr, size);
-                    page = Marshal.PtrToStructure<AMS2Page>(ptr);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    stream.Close();
-                    Marshal.FreeHGlobal(ptr);
-                    ptr = nint.Zero;
-                }
+                    byte[] buffer = new byte[Marshal.SizeOf<AMS2Page>()];
 
-                if (page.mSequenceNumber % 2 != 0) goto Again;
+                    MemoryMappedViewStream stream = mmf.CreateViewStream();
+                    stream.Read(buffer, 0, buffer.Length);
+                    int size = buffer.Length;
+                    nint ptr = nint.Zero;
+                    
+                    try
+                    {
+                        ptr = Marshal.AllocHGlobal(size);
+                        Marshal.Copy(buffer, 0, ptr, size);
+                        page = Marshal.PtrToStructure<AMS2Page>(ptr);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    finally
+                    {
+                        stream.Close();
+                        Marshal.FreeHGlobal(ptr);
+                        ptr = nint.Zero;
+                    }
+
+                }
+                while (page.mSequenceNumber % 2 != 0); //Documentation says that sequence number should be even otherwise page is still being written to
                 return page;
             }
             else
